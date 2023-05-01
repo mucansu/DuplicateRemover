@@ -21,14 +21,15 @@ public class Exercises {
         //This method is to add all users into our userList in one line
     }
 
-    public Optional<User> getUser(Integer id){
-        Optional optional = Optional.empty();
-        for (User user: userList) {
-        if (id == user.getId()){
-            optional = Optional.of(user);
+    public Optional<User> getUserById(int id) {
+        Optional<User> result = Optional.empty();
+        for (User user : userList) {
+            if (user.getId() == id) {
+                result = Optional.of(user);
+                break;
+            }
         }
-        }
-        return optional;
+        return result;
     }
     //The use of Optional here is a way of handling the case where no User is found for the given id without returning null.
     // Instead, it returns an Optional.empty() which can be safely handled by the calling code to avoid null pointer exceptions.
