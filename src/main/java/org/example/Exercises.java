@@ -3,11 +3,12 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-public class AddAll {
+public class Exercises {
     public User user;
     private List<User> userList;
-    public AddAll(){
+    public Exercises(){
         userList = new ArrayList<>();
 
         User user1 = new User(1,"Mustafa",27,"mucansu@gmail.com");
@@ -19,4 +20,16 @@ public class AddAll {
         userList.addAll(Arrays.asList(user1,user2,user3,user4,user5));
         //This method is to add all users into our userList in one line
     }
+
+    public Optional<User> getUser(Integer id){
+        Optional optional = Optional.empty();
+        for (User user: userList) {
+        if (id == user.getId()){
+            optional = Optional.of(user);
+        }
+        }
+        return optional;
+    }
+    //The use of Optional here is a way of handling the case where no User is found for the given id without returning null.
+    // Instead, it returns an Optional.empty() which can be safely handled by the calling code to avoid null pointer exceptions.
 }
